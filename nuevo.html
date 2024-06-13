@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones de Libros</title>
+    <style>
+         .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .background {
+            display: none;
+        }
+
+        .background.active {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        video.background {
+            object-fit: cover;
+        }
+       .button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+            body {
+                font-family: 'Libre Baskerville', serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('sii.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            transition: background-color 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            }
+            
+            .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            display: none;
+        }
+        .background.active {
+            display: block;
+        }
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+        nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid #ddd;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 8px 8px 0 0;
+        }
+        nav a {
+            padding: 14px 16px;
+            margin: 0;
+            color: #333;
+            text-align: center;
+            text-decoration: none;
+            flex-grow: 1;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+        }
+        nav a:hover, nav a.active {
+            background-color: #ddd;
+            color: black;
+            font-weight: bold;
+        }
+        main {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 0 0 8px 8px;
+            color: #000;
+        }
+        .section {
+    display: none;
+}
+        .section.active {
+            display: block;
+        }
+        h2 {
+            text-align: center;
+        }
+        .author-img {
+            width: 150px;
+            height: auto;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+        .book {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .book img {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .book-info {
+            max-width: 600px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #555;
+        }
+        nav a {
+    padding: 14px 16px;
+    margin: 0;
+    color: #000; 
+    text-align: center;
+    text-decoration: none;
+    flex-grow: 1;
+    border: 1px solid #183f94;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    transition: color 0s ease; 
+}
+nav a.alex-mirez:hover {
+    color: red; 
+}
+
+nav a.flor-m-salvador:hover {
+    color: purple; 
+}
+
+nav a.alice-kellen:hover {
+    color: #b61746; 
+}
+
+nav a.stephen-king:hover {
+    color: #0080ff;
+}
+
+nav a.edgar-allan-poe:hover {
+    color: #000; 
+}
+
+nav a.jane-austen:hover {
+    color: #ff69b4; 
+}
+
+nav a.julio-verne:hover {
+    color: #008000; 
+}
+
+nav a.howard-phillips-lovecraft:hover {
+    color: #ff6a00; 
+}
+    </style>
+    <script>
+        
+            function showSection(sectionId, color) {
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            
+            var tabs = document.querySelectorAll('nav a');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`nav a[href='#${sectionId}']`).classList.add('active');
+            
+            document.body.style.backgroundColor = color;
+        }
+        
+    </script>
+</head>
+<body>
+    <video id="video-alex-mirez" class="background" src=".vscode/alex-mirez.mp4.mp4" type="video/mp4" loop muted></video>
+    <video id="video-flor-m-salvador" class="background" src=".vscode/flor.mp4" type="video/mp4" loop muted></video>
+    <video id="video-alice-kellen" class="background" src=".vscode/alice.mp4" type="video/mp4" loop muted></video>
+    <video id="video-stephen-king" class="background" src=".vscode/stephen.mp4" type="video/mp4" loop muted></video>
+    <video id="video-edgar-allan-poe" class="background" src=".vscode/edgar.mp4" type="video/mp4" loop muted></video>
+    <video id="video-jane-austen" class="background" src=".vscode/jane.mp4" type="video/mp4" loop muted></video>
+    <video id="video-julio-verne" class="background" src=".vscode/julio.mp4" type="video/mp4" loop muted></video>
+    <video id="video-howard-phillips-lovecraft" class="background" src="howard.mp4" type="video/mp4" loop muted></video>
+
+    <header>
+        <h1>Recomendaciones de Libros</h1>
+        <p>Esta página web es para dar mi más humilde recomendación :) acerca de libros de grandes autores, en cualquier categoría, cualquier género. Léelo y solo diviértete y descubre.</p>
+        <p>OJO esto es mi opinión acerca de los libros que más me gustan. Si no te gusta mi opinión es válido, solo mantén el respeto.</p>
+        <p>Esta creada principalmente para los amantes de la literatura. Aquí no hay malos tratos o ofensas, cualquier tipo de lector es bienvenido sin excepciones y menosprecios, al igual que sus opiniones.</p>
+        <p>Pero también está creada para impulsar a la literatura, para aquellos que apenas la están descubriendo y quieran introducirse en nuestro mundo tan mágico y especial... que no es real.</p>
+        <button class="button" onclick="resetPage()" >INICIO</button>
+
+    </header>
+   
+        <nav>
+            <a href="#alex-mirez" class="alex-mirez" onclick="showSection('alex-mirez', 'video-alex-mirez')">Alex Mirez</a>
+            <a href="#flor-m-salvador" class="flor-m-salvador" onclick="showSection('flor-m-salvador', 'video-flor-m-salvador')">Flor M. Salvador</a>
+            <a href="#alice-kellen" class="alice-kellen" onclick="showSection('alice-kellen', 'video-alice-kellen')">Alice Kellen</a>
+            <a href="#stephen-king" class="stephen-king" onclick="showSection('stephen-king', 'video-stephen-king')">Stephen King</a>
+            <a href="#edgar-allan-poe" class="edgar-allan-poe" onclick="showSection('edgar-allan-poe', 'video-edgar-allan-poe')">Edgar Allan Poe</a>
+            <a href="#jane-austen" class="jane-austen" onclick="showSection('jane-austen', 'video-jane-austen')">Jane Austen</a>
+            <a href="#julio-verne" class="julio-verne" onclick="showSection('julio-verne', 'video-julio-verne')">Julio Verne</a>
+            <a href="#howard-phillips-lovecraft" class="howard-phillips-lovecraft" onclick="showSection('howard-phillips-lovecraft', 'video-howard-phillips-lovecraft')">Howard Phillips Lovecraft</a>
+<h1></h1>
+        </nav>
+
+    <main>
+        
+        <div id="alex-mirez" class="section active">
+            <h2>Alex Mirez</h2>
+            <img src=".vscode/Alex.jpg" alt="Alex Mirez" class="author-img">
+            <div class="book">
+                <img src=".vscode/strange1.jpg" alt="Libro 1 de Alex Mirez">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong>  ¿QUÉ HARÍAS SI UNA NOCHE ENCONTRARAS A UN APUESTO CHICO SEMIDESNUDO Y CUBIERTO de SANGRE en TU PATIO? ¿Y SI ADEMÁS de ATRACTIVO FUERA PERTURBADOR? 
+                    </p>
+                    <a href="https://www.wattpad.com/story/117015899?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button" onclick="saveCurrentSection('alex-mirez')">¡Leelo Aquí! </a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/strange2.jpg" alt="Libro 2 de Alex Mirez">
+                <div class="book-info">
+                    <p><strong>Libro 2:</strong> La aparición de un salvaje y misterioso extraño con heterocromía y actitudes inquietantes hace que Mack Cavalier (sí, una chica) empiece a hacerse estas preguntas: ¿Cómo llegó hasta su patio? ¿Por qué no quiere ayuda de la policía? ¿Por qué no puede decir más de tres palabras? ¿Es peligroso? </p>
+                    <a href="https://www.wattpad.com/story/117015899?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button" onclick="saveCurrentSection('alex-mirez')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/damian1.jpg" alt="Libro 1 de Alex Mirez">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Padme ha vivido durante toda su vida en el pueblo de Asfil. Es una chica normal, buena. O eso parece. En el fondo tiene varios secretos, y uno de ellos se llama Damián. Es su peculiar vecino, que siempre le dio la impresión de estar ocultando algo y a quien ella trató de descifrar sin éxito.</p>
+                    <a href="https://www.wattpad.com/story/48091821?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('alex-mirez')">¡Leelo Aquí! </a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/damian2.jpg" alt="Libro 2 de Alex Mirez">
+                <div class="book-info">
+                    <p><strong>Libro 2:</strong>  Y si nada terminó con la pregunta?  «¿Damián?, ¿quién es Damián?»Eso es lo último que Padme Gray recuerda, junto al hecho de que despertó de nuevo en su casa, en donde las cosas y las personas parecen estar en sus antiguos sitios. El retorcido pueblo de Asfil también parece el mismo.Solo que no, no lo es.¿Qué sucedió? Que Padme ha despertado dentro del mismo día en el que toda su horrible historia empezó. Y tendrá que revivirlo. Pero hay un problema; todo está al revés:Lo que antes estaba mal, ahora está bien.</p>
+                    <a href="https://www.wattpad.com/story/362305372?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('alex-mirez')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/p.m1.jpg" alt="Libro 1 de Alex Mirez">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Recién llegada a la elitista universidad Tagus, Jude Derry descubre que ahí todo gira alrededor de las fiestas, los chismes, los ligues y sobre todo de tres atractivos hermanos que son famosos por su influyente apellido: Cash.
+                    </p>
+                    <a href="https://www.wattpad.com/story/136017693?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('alex-mirez')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/p.m2.jpg" alt="Libro 2 de Alex Mirez">
+                <div class="book-info">
+                    <p><strong>Libro 2:</strong>  En Tangus, una de las universidades más elitistas del mundo, todo gira en torno a un trío los hermanos Cash. Son vacilones y astutos, pero insoportablemente atractivos y poderosos. 
+                    </p>
+                    <a href="https://www.mercadolibre.com.mx/peligros-y-verdades-perfectos-mentirosos-2-de-mirez-alex-wattpad-editorial-montena-tapa-blanda-en-espanol-2020/p/MLM21127012?pdp_filters=category:MLM1196#searchVariation=MLM21127012&position=3&search_layout=stack&type=product&tracking_id=ff2a98a2-ab0a-4061-9e1e-b48c8eede922" class="button"onclick="saveCurrentSection('alex-mirez')">¡Consiguelo Aquí! </a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/p.m3.jpg" alt="Libro 3 de Alex Mirez">
+                <div class="book-info">
+                    <p><strong>Libro 3:</strong> Llega el broche a la historia de Perfectos Mentirosos, todas las mentiras serán desveladas.
+                        Después de la muerte de Melanny, Adrik Cash tuvo mucho que contar. Y liberar.
+                        Con la versión de Adrik conoceremos todos los secretos y mentiras que se tejieron después de la muerte de Melanny, desencadenantes de toda la trama de Perfectos Mentirosos. </p>
+                        <a href="https://latam.casadellibro.com/libro-perfectos-mentirosos-3/9788418483233/12552901" class="button"onclick="saveCurrentSection('alex-mirez')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/asfixia.jpg" alt="Libro 1 de Alex Mirez">
+                <div class="book-info">
+                    <p><strong>Libro 2:</strong> Todos estábamos bien y de un momento a otro las personas comenzaron a morir asfixiadas. Poco a poco, el mundo se sumió en un pasmoso silencio. Sobreviví a ese misterioso y catastrófico incidente gracias a mi padre. Cuando desperté, me encontré con el horroroso panorama de millones de cadáveres. 
+                    </p>
+                    <a href="https://www.wattpad.com/story/38751687?utm_source=android&utm_medium=com.whatsapp&utm_content=story_info&wp_page=story_details_button&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('alex-mirez')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToNextAuthor('flor-m-salvador', 'video2')">Siguiente Autor</button>
+            </div>
+        </div>
+        <div id="flor-m-salvador" class="section active">
+            <h2>Flor M. Salvador</h2>
+            <img src=".vscode/Flor.jpg" alt="Flor M. Salvador" class="author-img">
+            <div class="book">
+                <img src=".vscode/Boulevard.jpg" alt="Libro 1 de Flor M. Salvador">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Una historia en donde dos adolescentes crean su propio Boulevard ante la llovizna que hay en sus corazones, con un cielo pintado de azul cálido en una parte y otra de un azul eléctrico, tiñéndose este por completo de un grisáceo nostálgico. 
+                    </p>
+                    <a href="https://www.wattpad.com/story/34288121?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('flor-m-salvador')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/Boulevard2.jpg" alt="Libro 2 de Flor M. Salvador">
+                <div class="book-info">
+                    <p><strong>Libro 2:</strong> Después de la muerte de ****. Hasley debe seguir con su vida, viviendo de su primer amor. Las sabias palabras de su madre diciéndole que debía continuar, que aún era joven y podía encontrar a alguien mas, no eran aceptadas para ella. Sin embrago, la vida esta llena de varias oportunidades. 
+                    </p>
+                    <a href="https://www.wattpad.com/story/118481137?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('flor-m-salvador')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/boulevard3.jpg" alt="Libro 3 de Flor M. Salvador">
+                <div class="book-info">
+                    <p><strong>Libro 3:</strong> Antes de Hasley Weigel, hubo alguien mas, Bella Adams fue la primera historia de amor que Luke tuvo, sin embargo, no tan fuerte como su última. La barrera que él construyo impidió que mirara mas allá de lo que él merecía. A pesar de que Bella se aferro a Luke casi dos años, se rindió. 
+                    </p>
+                    <a href="https://www.wattpad.com/story/119372588?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('flor-m-salvador')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/boulevard4.jpg" alt="Libro 4 de Flor M. Salvador">
+                <div class="book-info">
+                    <p><strong>Libro 4:</strong> Luke Howland a su corta edad ha aprendido en sus diecinueve años que nada en la tierra es justo. De hecho, el sufrimiento es parte de vivir y llorar es un método para hacerle saber al médico que has nacido vivo. ¿Qué hay dentro de un ser que carga con todo el dolor de una pérdida importante? 
+                    </p>
+                    <a href="https://www.wattpad.com/story/202856377?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('flor-m-salvador')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/constelaciones.jpg" alt="Libro 1 de Flor M. Salvador">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Si las personas fueran constelaciones nos habla sobre Aidan Howland. El hijo de Luke Howland. Relata como su vida fue después de que llegara a Sidney con su madre Bella. Su familia puso una ilusión de perfección en Aidan, o sea que pintaron la verdad por una verdad ilusa. 
+                    </p>
+                    <a href="https://www.wattpad.com/story/186934536?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('flor-m-salvador')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/algun dia.jpg" alt="Libro 1 de Flor M. Salvador">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> El inicio de algo bonito se da cuando Diego le grita a Stella que le baje de volumen a su espantosa música. Ambos inician con el pie derecho, sí, el derecho porque los dos son zurdos.
+                    </p>
+                    <a href="https://www.wattpad.com/story/261731298?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('flor-m-salvador')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/huracan.jpg" alt="Libro 1 de Flor M. Salvador">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> ¿Escuchaste alguna vez que en esta vida conocemos esa faceta de las personas que sólo ellas nos permiten conocer? 
+                        Bueno, tú podías ver al diablo mirarte con furia y al mismo tiempo como un ángel te sonreía.
+                        </p>
+                        <a href="https://www.wattpad.com/story/143712324?utm_source=android&utm_medium=com.whatsapp&utm_content=share_reading&wp_page=reading_list_details&wp_uname=Yazmin1413" class="button"onclick="saveCurrentSection('flor-m-salvador')">¡Leelo Aquí!</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToNextAuthor('alice-kellen', 'video3')">Siguiente Autor</button>
+            </div>
+        </div>
+        <div id="alice-kellen" class="section active">
+            <h2>Alice Kellen</h2>
+            <img src=".vscode/Alice.jpg" alt="Alice Kellen" class="author-img">
+            <div class="book">
+                <img src=".vscode/A1.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Junto a sus dos mejores amigas, Emma deja atrás la ciudad de Nueva York y viaja a California con el firme propósito de pasar las vacaciones con un cóctel en la mano, bajo el sol, en las cálidas playas de la costa. Un plan perfecto. O al menos lo fue hasta que se encontró con Alex, 
+                    </p>
+                    <a href="https://a.co/d/h9BIHQ4" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A2.jpg" alt="Libro 2 de Alice Keller">
+                <div class="book-info">
+                    <p><strong>Libro 2:</strong> Tras un desengaño amoroso, Elisa está decidida a retomar las riendas de su vida e ir tachando propósitos de su lista de objetivos: seguir siendo la mejor en su empleo, casarse, formar una familia, mudarse a una bonita casa a las afueras… ¿El problema? Todavía no ha conocido al futuro padre de sus hijos. 
+                    </p>
+                    <a href="https://a.co/d/fDjbrBZ" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A3.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Mike, Rachel, Luke y Jason han sido amigos inseparables desde pequeños. Pero sus caminos se alejaron cuando Rachel cometió el error de enamorarse del chico equivocado, Mike, que terminó traicionando a la única persona que siempre estuvo dispuesta a arriesgarlo todo por él. 
+                    </p>
+                    <a href="https://a.co/d/4TvGTuv" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A4.jpg" alt="Libro 2 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 2:</strong> Es una historia de matrimonio de conveniencia para que la protagonista pueda heredar y así abrir la pastelería de sus sueños, aunque para ello se casa en Las Vegas con un desconocido que la buscará durante bastante tiempo hasta encontrarla y pedirle el divorcio. 
+                    </p>
+                    <a href="https://a.co/d/66PGO6j" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A5.jpg" alt="Libro 3 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 3:</strong> Autumn, una chica que no lo ha tenido fácil en la vida. Ha pasado toda su infancia de una casa de acogida a otra, sin un hogar o una familia que se preocupe por ella. Hasta que lo conoce a ÉL. 
+                    </p>
+                    <a href="https://a.co/d/bcwEEya" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A6.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Leah está rota. Leah ya no pinta. Leah es un espejismo desde el accidente que se llevó a sus padres.Axel es el mejor amigo de su hermano mayor y, cuando accede a acogerla en su... 
+                    </p>
+                    <a href="https://a.co/d/gOqJ5v2" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A7.jpg" alt="Libro 2 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 2:</strong> Cuando sus caminos vuelven a cruzarse, Leah tiene que tomar decisiones que pueden cambiarlo todo, porque, a pesar de lo que ocurrió, los recuerdos de toda su vida siguen ahí: intactos, bonitos, únicos. Colándose en cada grieta que aún no ha cerrado. 
+                    </p>
+                    <a href="https://a.co/d/0KEnpuw" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A8.jpg" alt="Libro 3 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 3:</strong> Axel es el mejor amigo de su hermano mayor y, cuando accede a acogerla en su casa, quiere ayudarla a encontrar y unir los pedazos de la chica llena de color que un día fue. Pero no sabe que ella siempre ha estado enamorada de él, a pesar de que sean casi familia, ni de que toda su vida está a punto de cambiar.</p>
+                <a href="https://a.co/d/gdepeno" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+            </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A9.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Un romance que empieza como batalla campal en un concurso de periodismo. Léane y Blake, ella francesa y él inglés, no son dos piezas de un puzle destinadas a encajar. En realidad, ni siquiera se soportan cuando el concurso de periodismo de la universidad los sitúa en el mismo punto de partida. 
+                    </p>
+                    <a href="https://latam.casadellibro.com/libro-llevame-a-cualquier-lugar/9788418927683/12951397" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A10.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Víctor y Sara no han vuelto a ser los mismos. Después de formalizar su divorcio, cada uno intenta reconstruir su vida e ir encajando las piezas de un puzle que creían haber concluido y que ahora se ha roto. Pero a veces los pedazos son tan pequeños, tan escurridizos... que cuesta encontrarlos. 
+                    </p>
+                    <a href="https://articulo.mercadolibre.com.mx/MLM-3054197966-sigue-lloviendo-_JM" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A11.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Un chico con el corazón de hielo.Una chica que huye de sí misma.
+                        Dos destinos que se cruzan.Heather cree que solo hay tres cosas que sabe hacer: atraer problemas, salir huyendo y correr. </p>
+                        <a href="https://a.co/d/iIvlxSm" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A12.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La de Valentina, la chica que no sabía que tenía el mundo a sus pies, la que creció y empezó a pensar en imposibles. La que cazaba estrellas, la que anhelaba más, la que tropezó con él. Con Gabriel, el chico que dibujaba constelaciones, el valiente e idealista, el que confió en las palabras «para siempre» y creó los pilares que terminaron sosteniendo el pasado, el ahora, lo que fueron y los recuerdos que se convertirán en polvo. 
+                    </p>
+                    <a href="https://a.co/d/hc8mv5J" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A13.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Cuando Sophie se enamoró de Simon, supo que juntos tejerían una inolvidable historia llena de vivencias y canciones, pero todo acabó una noche de enero y sus sueños se quedaron congelados en aquel invierno eterno, el más largo y frío que nunca pudo imaginar. Hasta que el hielo empieza a derretirse para que Ámsterdam se vista de primavera. Entonces, Sophie descubre que Koen estará a su lado cuando decida alzar el vuelo, que su familia y amigos son su brújula, que ganar requiere de ingenio y que el corazón sigue sus propias reglas. 
+                    </p>
+                    <a href="https://a.co/d/8j1CLvl" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A14.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> No hay nada más eterno que un encuentro fugaz.  Una noche en París. Dos caminos entrelazándose. Cuando Rhys y Ginger se conocen en las calles de la ciudad de la luz, no imaginan que sus vidas se unirán para siempre, a pesar de la distancia y de que no puedan ser más diferentes.  
+                    </p>
+                    <a href="https://a.co/d/ia02WCZ" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A15.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> ¿Es eterna la pasión? ¿Se pueden olvidar la mentira y la traición sin que queden esquirlas? ¿Qué ocurre cuando dos meteoritos que prometieron ser invencibles colisionan? 
+                    </p>
+                    <a href="https://a.co/d/4qb0pix" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A16.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> ¿Y si te diesen un mapa para descubrir quién eres? ¿Seguirías la ruta marcada hasta el final? Imagina que estás destinada a salvar a tu hermana, pero al final ella muere y la razón de tu existencia se desvanece. Eso es lo que le ocurre a Grace... 
+                    </p>
+                    <a href="https://www.amazon.com.mx/dp/6070786289?ref=cm_sw_r_mwn_dp_4M2G6W1KGFMZKPW934ZB&ref_=cm_sw_r_mwn_dp_4M2G6W1KGFMZKPW934ZB&social_share=cm_sw_r_mwn_dp_4M2G6W1KGFMZKPW934ZB&language=en_US" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A17.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> viene a decir que todos somos islas, llegamos solos a este mundo y nos vamos exactamente igual, pero necesitamos tener otras islas alrededor para sentirnos felices en medio de ese mar que une tanto como separa". 
+                    </p>
+                    <a href="https://a.co/d/8yO1GCr" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/A18.jpg" alt="Libro 1 de Alice Kellen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La autora que ha enamorado a más de dos millones de lectores.¿Y si lo único que necesitamos para ser felices es descubrir el brillo de las cosas intangibles? Nicki Aldrich y River Jackson han sido inseparables desde que llegaron al mundo con cuarenta y siete minutos de diferencia.  
+                    </p>
+                    <a href="https://latam.casadellibro.com/libro-donde-todo-brilla/9788408269281/13500053" class="button"onclick="saveCurrentSection('alice-kellen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToNextAuthor('stephen-king', 'video4')">Siguiente Autor</button>
+            </div>
+        </div>
+        <div id="stephen-king" class="section active">
+            <h2>Stephen King</h2>
+            <img src=".vscode/Stephen.jpg" alt="Stephen King" class="author-img">
+            <div class="book">
+                <img src=".vscode/S1.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La fantasía y el terror se mezclan en la última novela de King. Protagonizado por Charlie Reade, plantea una batalla entre el bien y el mal, un tema recurrente en la obra del autor. Todo comienza porque Reade, en su intento desesperado de salvar a su padre del alcoholismo, promete a Dios hacer el bien en el mundo si su progenitor se recupera. Cuando esto sucede, encuentra dos amigos inesperados: una perra llamada Radar y su anciano dueño, Howard Bowditch: un ermitaño que vive en una casa enorme situada en la colina y que cuenta con un cobertizo cerrado a cal y canto en el patio trasero del que, a veces, emergen ruidos extraños. Al fallecer, el anciano le deja al chico una cinta de casete que contiene una historia increíble, se trata del gran secreto que Bowditch ha guardado durante toda su vida: dentro de su cobertizo existe un portal que conduce a otro mundo.  
+                    </p>
+                    <a href="https://latam.casadellibro.com/libro-cuento-de-hadas/9788401027710/13108168" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S2.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Adaptada a la gran pantalla en 2019, es la continuación de una de las novelas más icónicas de King: ‘El resplandor’. Esta vez, la historia se centra en Danny Torrace (el niño protagonista de la primera parte), convertido ahora en un adulto alcohólico que consigue trabajo en una residencia de ancianos de New Hampshire. Allí conocerá a Abra Stone, una niña de doce años que necesita su ayuda: a la pequeña la persigue una tribu de seres paranormales que vive del resplandor de los niños especiales; y el de Abra tiene tanta fuerza que los podría mantener vivos durante mucho tiempo. Juntos librarán una lucha entre el bien y el mal para intentar salvarla a ella, pero también al resto de niños que intentan sacrificar. 
+                    </p>
+                    <a href="https://a.co/d/cjZ34db" class="button"onclick="saveCurrentSection('stephen-king')">    ¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S3.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Esta novela postapocalíptica es la más extensa hasta el momento del escritor; la narración abarca 1.583 páginas, incluyendo el prólogo (‘El círculo se abre’) y el epílogo (‘El círculo se cierra’). La idea nació cuando King oyó hablar de la Gripe A, una enfermedad que mató a un par de animales, pero que podría haberse extendido al resto de la humanidad causando estragos. En el libro, la Gripe Trotamundos escapa de un laboratorio militar y da lugar a una pandemia que erradica a la mayoría de la población, dejando el mundo devastado. Aquellos que sobreviven a la enfermedad empiezan a tener sueños y pesadillas. Los supervivientes ‘buenos’ sueñan con la anciana Abigail, mientras que los malvados lo hacen el terrorífico Hombre de Negro, Randall Flagg, que busca la aniquilación definitiva de la humanidad mediante un temible arsenal nuclear. Ambos bandos se encontrarán y enfrentarán en Nebraska, dando lugar a una nueva lucha entre el bien y el mal. 
+                    </p>
+                     <a href="https://a.co/d/iaqatZZ" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S4.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Publicada a principios de los 90, es una historia de terror real sobre la vida, la muerte y las miserias humanas narrada en primera persona por la protagonista, Dolores Claiborne. Ella se encarga de relatar los eventos que condujeron a la muerte, por una parte, de su esposo Joe, y por otra, de Vera Donovan, dueña de la casa donde trabajaba como ama de llaves. Dolores presenta su conmovedora confesión y revela los extraños y terribles lazos que la obligaron a callar durante 30 años y llenaron su corazón de una ira silenciosa. Una novela espeluznante que muestra las intimidades más oscuras y los pecados más despreciables de los hombres y las mujeres de un pequeño pueblo de Maine. La historia fue trasladada al cine de la mano del director Aylor Hackford en 1995, con el nombre de ‘Eclipse Total’. 
+                    </p>
+                    <a href="https://latam.casadellibro.com/libro-dolores-claiborne/9788499080017/1263793" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S5.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Arnie Cunningham es un joven no muy popular del que se ríen sus compañeros de clase por su apariencia. El chico se obsesiona con comprar un viejo Plymouth modelo 58, un coche al que su dueño llama Christine. Cuando por fin se hace con el automóvil y mientras trabaja en la ardua tarea de restaurarlo, Arnie comienza a ver cosas extrañas: el vehículo da muestras de tener vida propia. A partir de ese momento, empiezan a suceder espantosos hechos y muertes aterradoras en las oscuras calles y avenidas de Libertyville. Finalmente, el protagonista deberá enfrentarse a la realidad de que Christine está viva.  
+                    </p>
+                    <a href="https://a.co/d/dkVLj4U" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S6.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La primera novela de Stephen King fue publicada en 1973 y cuenta la historia de Carrie, una chica con apariencia insignificante que durante años ha sido maltratada por su madre y sufre acoso escolar por parte de sus compañeros de instituto. Todo cambia cuando se da cuenta de que tiene poderes paranormales y comienza a sembrar el terror en Chamberlain, el pueblo donde reside. Creando una atmósfera aterradora con la que Stephen King mantiene la tensión durante toda la narración, este libro combina los recuerdos de los protagonistas con recortes de prensa, cartas o informes de lo que va aconteciendo y reflexiona sobre el acoso escolar, los problemas de los jóvenes en la adolescencia o el maltrato en el seno familiar. En 1976 la historia de Carrie fue llevada al cine, y desde entonces, se han realizado cuatro adaptaciones a la gran pantalla. 
+                    </p>
+                    <a href="https://latam.casadellibro.com/libro-carrie/9788497595698/888856" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S7.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Aunque parece que en Salem’s Lot nunca pasa nada, lo cierto es que una tragedia ocurrida años atrás en la casa de los Marsten ha hecho que en este pueblo se respire, desde entonces, una tensa calma. De hecho, cuando era niño y debido a una apuesta con sus amigos, Ben Mears entró en ese edificio y lo que vio allí forma parte de sus peores pesadillas. Ahora, como escritor, vuelve a Salem’s Lot para revivir sus propios fantasmas y escribir un libro sobre los misteriosos asesinatos y desapariciones relacionados con la casa. Lo que no se esperaba es que allí se instalaran unos extraños comerciantes de muebles antiguos y que las muertes volvieran a suceder… Publicada en 1975, esta segunda novela de Stephen King ha sido adaptada como serie en 1979 y en 2004. 
+                    </p>
+                    <a href="https://a.co/d/2CFpz8y" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S8.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La tercera de las novelas de Stephen King está ambientada en un hotel, lugar al que se traslada la familia de Jack Torrance, que va a trabajar como guardia durante el invierno. Jack necesita ese trabajo para demostrar que está totalmente curado del alcoholismo que padece. Y aunque se suponía que él, su mujer y su hijo Danny iban a estar solos… la realidad se presenta ante el pequeño. Con tan solo cinco años, se da cuenta de una palabra en un espejo: ‘Redrum’. Aunque no sabe leer y desconoce que los espejos invierten las imágenes, Danny está convencido de que esa palabra no traerá nada bueno. Basada en el cuento ‘La máscara de la Muerte Roja’ de Edgar Allan Poe, Stanley Kubrick la adaptó para la gran pantalla en el año 1980, aunque con ciertas diferencias.  
+                    </p>
+                    <a href="https://a.co/d/gpBvpPB" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S9.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Se trata de una saga compuesta por ocho libros y más de 4.000 páginas en la que Stephen King combina varios géneros: fantasía, terror y western. Cuenta la historia de Roland Deschain, un pistolero miembro de una orden de caballería que tiene una misión: encontrar la Torre Oscura, un edificio del que se dice que es el centro de convergencia de todos los universos, el nexo de unión entre diferentes realidades, y que ahora está en peligro. El primero de los libros, ‘El pistolero’, se publicó en 1982 seguido de ‘La llegada de los tres’, ‘Las tierras baldías’, ‘Mago y cristal’, ‘Lobos del Calla’, ‘Canción de Susannah’, ‘La Torre Oscura’ y ‘El viento por la cerradura’, publicado este último en el año 2012. Cinco años más tarde se llevó a la gran pantalla. 
+                    </p>
+                    <a href="https://a.co/d/eMESM0b" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S10.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> El gato de Louis, Church, había muerto atropellado. Su hija Ellie le había dicho que lo cuidara, pero el gato ya no estaba vivo. Por esta razón, Louis lo entierra más allá del cementerio de animales, un lugar extraño y abandonado en el que todos los vecinos del lugar entierran a sus mascotas. Sin embargo, Church ha vuelto a casa. Con unos ojos diferentes, pero ‘vivo’. Y es que más allá del cementerio de animales se encuentran unas tierras que eran sagradas para los habitantes de la zona hace muchísimo tiempo, ya que allí se encontraba un cementerio de seres humanos que los devolvía a la vida… de una forma extraña. Inspirada en el cuento ‘La pata de mono’, del escritor británico W. W. Jacobs, fue publicada en 1983.  
+                    </p>
+                    <a href="https://a.co/d/feSLemc" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S11.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Muy reconocida entre el público debido a la imagen del payaso protagonista de la adaptación cinematográfica, fue publicada en 1986 y narra la historia de un grupo de niños que son aterrorizados por un monstruo al que llaman ‘Eso’ en la ciudad de Derry. Es capaz de cambiar de forma cuando lo desea, aunque la vestimenta más utilizada es la de un payaso siniestro llamado Pennywise. Está asesinando a niños sin piedad y aunque, en varias ocasiones, parece aniquilado, reaparece de nuevo. De hecho, pasados 27 años los asesinatos vuelven a suceder. El grupo de amigos supervivientes de ‘It’ necesita unirse de nuevo para vencerlo. 
+                    </p>
+                    <a href="https://www.sanborns.com.mx/producto/227476/it-eso" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S12.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Paul Sheldon es un escritor de novelas románticas que, tras sufrir un accidente, se despierta en la casa de una enfermera, Annie Wilkes, admiradora de todas sus obras y que ha estado involucrada en extrañas muertes en diferentes hospitales. Al principio parece que todo va bien con ella, pero pronto se da cuenta de que la enfermera tiene un objetivo: quiere que Paul continúe escribiendo más libros relacionados con la serie ‘Misery’, ambientada en la época victoriana y que tiene un personaje principal: Misery Chastain. En la última novela, el escritor ‘mata’ a la protagonista para acabar con la serie y eso a Annie no le ha gustado en absoluto. Publicada en 1987, la adaptación cinematográfica se produjo tres años después con Kathy Bates y James Caan como los protagonistas principales. 
+                    </p>
+                    <a href="https://a.co/d/c1weTFU" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S13.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Está ambientada en octubre de 1932 en la penitenciaría de Cold Mountain, en la que los condenados a muerte esperan el momento de ser ejecutados en la silla eléctrica por cometer unos terribles asesinatos; pero no todos ellos son culpables. La historia es narrada por Paul Edgecomb, un anciano que fue carcelero en esa misma cárcel y que se encargaba de su bloque. Junto a él aparecerán en escena diferentes reclusos, como John Coffer, que cuenta con ciertos poderes sobrenaturales capaces de sanar a las personas, Eduard Delacroix o William Wharton, entre otros. Llevada al cine en el año 1999, fue protagonizada por Tom Hanks, con varias nominaciones a los Premios Óscar. 
+                    </p>
+                    <a href="https://latam.casadellibro.com/libro-la-milla-verde/9788497592734/873688" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/S14.jpg" alt="Libro 1 de Stephen King">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> En mitad de la noche en un barrio tranquilo de Minneapolis raptan a Luke Ellis, de doce años, tras haber asesinado a sus padres. Una operación que dura menos de dos minutos. Luke se despierta en la siniestra institución conocida como el Instituto, en un cuarto que se asemeja al suyo pero sin ventanas. 
+                    </p>
+                    <a href="https://a.co/d/bQ73kaX" class="button"onclick="saveCurrentSection('stephen-king')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToNextAuthor('edgar-allan-poe', 'video5')">Siguiente Autor</button>
+            </div>
+        </div>
+        <div id="edgar-allan-poe" class="section active">
+            <h2>Edgar Allan Poe</h2>
+            <img src=".vscode/edgar.jpg" alt="Edgar Allan Poe" class="author-img">
+            <div class="book">
+                <img src=".vscode/E1.jpg" alt="Libro 1 de Edgar Allan Poe">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Este poema es uno de los trabajos más conocidos de Poe. Narra la visita de un cuervo parlante a un hombre angustiado que sufre por la pérdida de su amada, Lenore. La conversación con el cuervo, que solo responde "Nunca más", lleva al protagonista a la desesperación y la locura.
+
+                    </p>
+                    <a href="https://a.co/d/a2EnXTY" class="button"onclick="saveCurrentSection('edgar-allan-poe')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/E2.jpg" alt="Libro 1 de Edgar Allan Poe">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Este relato corto cuenta la historia de un narrador no fiable que insiste en su cordura mientras describe cómo asesinó a un anciano debido a su ojo "de buitre". Aunque el crimen es meticulosamente planeado y ejecutado, el narrador es traicionado por el latido de su propia culpa, simbolizado por el constante latido del corazón del anciano muerto.
+                    </p>
+                    <a href="https://a.co/d/b8XmpHG" class="button"onclick="saveCurrentSection('edgar-allan-poe')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/E3.jpg" alt="Libro 1 de Edgar Allan Poe">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> En este cuento, el narrador visita la mansión de su amigo de la infancia, Roderick Usher, quien vive en un estado de melancolía profunda. La casa en sí parece estar afectada por una maldición. A medida que la historia avanza, los eventos sobrenaturales y el deterioro físico de la casa culminan en un final trágico y espeluznante.</p>
+                    <a href="https://a.co/d/7cioQck" class="button"onclick="saveCurrentSection('edgar-allan-poe')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/E4.jpg" alt="Libro 1 de Edgar Allan Poe">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Ambientado durante la Inquisición Española, este cuento sigue a un prisionero condenado que enfrenta una serie de torturas psicológicas y físicas. La narración en primera persona describe con detalle sus experiencias y emociones mientras busca desesperadamente una forma de escapar de su destino fatal.</p>
+                    <a href="https://a.co/d/dl7mGRM" class="button"onclick="saveCurrentSection('edgar-allan-poe')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/E5.jpg" alt="Libro 1 de Edgar Allan Poe">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Considerado uno de los primeros relatos de detectives, introduce al personaje de C. Auguste Dupin, quien utiliza su brillante capacidad de análisis para resolver el brutal asesinato de dos mujeres en París. La historia destaca por su enfoque en la lógica y el razonamiento deductivo.
+                    </p>
+                    <a href="https://www.mercadolibre.com.mx/los-crimenes-de-la-calle-morgue/p/MLM22116051" class="button"onclick="saveCurrentSection('edgar-allan-poe')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/E6.jpg" alt="Libro 1 de Edgar Allan Poe">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Este relato cuenta la historia de un hombre que, bajo la influencia del alcohol, comete actos de crueldad hacia su gato, Pluto, y luego asesina a su esposa. La historia está llena de temas de culpa y retribución, y culmina en un final macabro cuando el protagonista es descubierto debido a los maullidos del gato resucitado.</p>
+                    <a href="https://a.co/d/9GL4J5m" class="button"onclick="saveCurrentSection('edgar-allan-poe')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/E7.jpg" alt="Libro 1 de Edgar Allan Poe">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> En este breve cuento, un herido busca refugio en una mansión abandonada y descubre un retrato oval de una mujer extremadamente realista. Al leer la historia del cuadro, descubre que la obsesión del artista por capturar la esencia de su esposa en la pintura llevó a la muerte de la mujer, ya que esta se consumía a medida que su imagen se completaba.</p>
+                    <a href="https://a.co/d/eOm8Y17" class="button"onclick="saveCurrentSection('edgar-allan-poe')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToNextAuthor('jane-austen', 'video6')">Siguiente Autor</button>
+            </div>
+        </div>
+        <div id="jane-austen" class="section active">
+            <h2>Jane Austen</h2>
+            <img src=".vscode/Jane.jpg" alt="Jane Austen" class="author-img">
+            <div class="book">
+                <img src=".vscode/J1.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Esta novela sigue la vida de Elizabeth Bennet, una joven inteligente y vivaz, y su complicada relación con el orgulloso Sr. Darcy. A través de malentendidos y prejuicios mutuos, ambos personajes evolucionan y descubren el amor verdadero.</p>
+                    <a href="https://a.co/d/4sN2avz" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/J2.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La historia se centra en las hermanas Dashwood, Elinor y Marianne, quienes deben enfrentar la pérdida de su fortuna y encontrar su camino en la sociedad. La novela explora los contrastes entre el sentido común y la sensibilidad emocional a través de las experiencias románticas de las hermanas.</p>
+                    <a href="https://a.co/d/7gt2jcE" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/J3.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Emma Woodhouse, una joven rica y obstinada, se dedica a hacer de casamentera en su pequeño círculo social, a menudo con resultados cómicos y desastrosos. A lo largo de la novela, Emma aprende sobre el amor y la humildad a medida que enfrenta las consecuencias de sus acciones.</p>
+                    <a href="https://latam.casadellibro.com/libro-emma/9788417430603/11249096" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/J4.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong>Fanny Price, una niña pobre, es enviada a vivir con sus ricos tíos en Mansfield Park. La novela explora temas de moralidad, deber y amor, mientras Fanny observa las acciones y relaciones de sus primos y otros personajes.</p>
+                    <a href="https://a.co/d/b3RtOgD" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/J5.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Anne Elliot, una mujer de 27 años, se reencuentra con el Capitán Frederick Wentworth, su antiguo prometido, ocho años después de haber roto su compromiso debido a la persuasión de su familia. La novela aborda temas de segundas oportunidades y el poder del amor constante.
+                    </p>
+                    <a href="https://www.amazon.com.mx/dp/6073130171?ref_=cm_sw_r_mwn_dp_N0JMPB1VY0G1R5C15WES&language=en_US" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/J6.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Catherine Morland, una joven ingenua y amante de las novelas góticas, es invitada a quedarse en la misteriosa Abadía de Northanger. La novela parodia las convenciones del género gótico y sigue el desarrollo de Catherine a medida que aprende a diferenciar entre la realidad y la ficción.
+                    </p>
+                    <a href="https://a.co/d/bI4RqHY" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/J7.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Esta novela epistolar presenta a Lady Susan Vernon, una viuda manipuladora y encantadora, mientras trata de asegurar matrimonios ventajosos para ella y su hija. La historia se desarrolla a través de una serie de cartas entre los personajes, revelando las maquinaciones de Lady Susan.
+                    </p>
+                    <a href="https://www.amazon.com.mx/dp/B08N3R7FKJ?ref_=cm_sw_r_mwn_dp_96NZF89JJHRYGKM0PHVW&language=es-MX" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/J8.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La novela sigue a Emma Watson, una joven que regresa a vivir con su familia después de ser criada por una tía rica. Aunque la obra está inacabada, ofrece una visión de las preocupaciones sociales y económicas de la época y el destino de las mujeres sin fortuna.
+                    </p>
+                    <a href="https://www.amazon.com.mx/dp/1544257201?ref_=cm_sw_r_mwn_dp_F2M5AKQB22JB2KBFSCK5&language=en_US" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <Var> <div class="book">
+                <img src=".vscode/J9.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Esta novela inacabada narra la historia de Charlotte Heywood y su visita a la ciudad costera de Sanditon, un lugar en desarrollo con grandes aspiraciones de convertirse en un balneario de moda. La obra explora temas de especulación y desarrollo social.</p>
+                    <a href="https://latam.casadellibro.com/libro-sanditon/9788418933707/14148745" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+        </Var>
+            <div class="book">
+                <img src=".vscode/J10.jpg" alt="Libro 1 de Jane Austen">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La colección "Juvenilia" incluye varias historias cortas, dramas y bocetos escritos por Jane Austen entre los 12 y los 18 años. Estas piezas muestran su temprano talento literario y su agudo sentido del humor, sentando las bases para sus obras posteriores.</p>
+                    <a href="https://www.iberlibro.com/servlet/BookDetailsPL?bi=15230732645&cm_sp=snippet-_-srp0-_-tile1&searchurl=an%3Dmiguel%2Bcane%26ds%3D10%26rollup%3Don%26sortby%3D17%26tn%3Djuvenilia%2Botras%2Bpaginas%2Bargentinas" class="button"onclick="saveCurrentSection('jane-austen')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToNextAuthor('julio-verne', 'video7')">Siguiente Autor</button>
+            </div>
+        </div>
+        <div id="julio-verne" class="section active">
+            <h2>Julio Verne</h2>
+            <img src=".vscode/j_verne.jpg" alt="Julio Verne" class="author-img">
+            <div class="book">
+                <img src=".vscode/V1.jpg" alt="Libro 1 de Julio Verne">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> El profesor Pierre Aronnax, su criado Conseil y el arponero Ned Land son capturados por el capitán Nemo a bordo del submarino Nautilus. Durante su viaje por los océanos, los protagonistas descubren maravillas marinas y viven emocionantes aventuras, mientras intentan entender al enigmático Nemo y su mundo submarino.
+                    </p>
+                    <a href="https://a.co/d/7yn4Gv0" class="button"onclick="saveCurrentSection('julio-verne')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/V2.jpg" alt="Libro 1 de Julio Verne">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Phileas Fogg, un inglés metódico y flemático, apuesta con los miembros de su club que puede dar la vuelta al mundo en ochenta días. Acompañado por su leal sirviente, Passepartout, Fogg emprende una carrera contrarreloj, enfrentándose a diversos obstáculos y desafíos en su travesía por diferentes países y continentes.
+                    </p>
+                    <a href="https://www.amazon.com.mx/dp/6073808534?ref_=cm_sw_r_mwn_dp_Z9YTKRSJTB3H4CJ6S15R&language=es-MX" class="button"onclick="saveCurrentSection('julio-verne')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/V3.jpg" alt="Libro 1 de Julio Verne">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> SEl profesor Otto Lidenbrock, su sobrino Axel y el guía Hans Belker se embarcan en una expedición hacia el centro de la Tierra, siguiendo las pistas de un antiguo manuscrito. Ingresan a través de un volcán en Islandia y descubren un mundo subterráneo lleno de maravillas geológicas y criaturas prehistóricas.
+                    </p>
+                    <a href="https://a.co/d/fCrqOUI" class="button"onclick="saveCurrentSection('julio-verne')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/V4.jpg" alt="Libro 1 de Julio Verne">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Tras el fin de la Guerra Civil estadounidense, el presidente del Gun Club de Baltimore, Impey Barbicane, propone enviar un proyectil a la Luna. Con la ayuda de sus compañeros, Barbicane construye un gigantesco cañón para lanzar una cápsula tripulada, en la que se embarcan él, el capitán Nicholl y el aventurero francés Michel Ardan.
+                    </p>
+                    <a href="https://a.co/d/3Od4DVo" class="button"onclick="saveCurrentSection('julio-verne')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/V5.jpg" alt="Libro 1 de Julio Verne">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Tras encontrar un mensaje en una botella, Lord y Lady Glenarvan organizan una expedición para rescatar al capitán Grant, desaparecido en el mar. Acompañados por los hijos del capitán, Mary y Robert, y el excéntrico geógrafo Paganel, viajan por América del Sur, Australia y Nueva Zelanda enfrentando múltiples peligros y aventuras.</p>
+                    <a href="https://www.amazon.com.mx/dp/8427213824?ref_=cm_sw_r_mwn_dp_VRWG49QCFND71NGEN4GC&language=es-MX" class="button"onclick="saveCurrentSection('julio-verne')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/V6.jpg" alt="Libro 1 de Julio Verne">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Cinco prisioneros de guerra escapan en un globo y terminan varados en una isla desierta en el Pacífico. Llaman a su nuevo hogar Isla Lincoln y trabajan para sobrevivir y prosperar en su entorno. A lo largo de la historia, descubren misteriosos eventos que finalmente los llevan a un encuentro inesperado con el capitán Nemo.
+                    </p>
+                    <a href="https://www.amazon.com.mx/dp/9700742717?ref_=cm_sw_r_mwn_dp_W68WWT7AY3SV2A73H0D9&language=en_US" class="button"onclick="saveCurrentSection('julio-verne')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/V7.jpg" alt="Libro 1 de Julio Verne">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Miguel Strogoff, un correo del zar, es enviado en una peligrosa misión a Siberia para entregar un mensaje secreto al hermano del zar, el Gran Duque. A lo largo de su viaje, enfrenta numerosos desafíos, incluyendo un traidor, la invasión tártara y difíciles condiciones naturales, mientras se esfuerza por cumplir su deber y proteger su patria.
+                    </p>
+                    <a href="https://www.amazon.com.mx/dp/8427213832?ref_=cm_sw_r_mwn_dp_NBD9HR1R9M3D895R8TYP&language=en_US" class="button"onclick="saveCurrentSection('julio-verne')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/V8.jpg" alt="Libro 1 de Julio Verne">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> El Dr. Samuel Fergusson, junto con su sirviente Joe y su amigo Richard "Dick" Kennedy, emprende un viaje en globo aerostático a través de África. Su objetivo es explorar regiones desconocidas y resolver varios enigmas geográficos. Durante su travesía, enfrentan tormentas, tribus hostiles y peligros de la fauna salvaje.</p>
+                    <a href="https://a.co/d/aaH72rD" class="button"onclick="saveCurrentSection('julio-verne')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToNextAuthor('howard-phillips-lovecraft', 'video8')">Siguiente Autor</button>
+            </div>
+        </div>
+        <div id="howard-phillips-lovecraft" class="section active">
+            <h2>Howard Phillips Lovecraft</h2>
+            <img src=".vscode/H.P.L.jpg" alt="Howard Phillips Lovecraft" class="author-img">
+            <div class="book">
+                <img src=".vscode/H1.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Este relato sigue a Francis Wayland Thurston, quien investiga el culto de Cthulhu a través de notas dejadas por su difunto tío. La historia revela la existencia de una deidad antigua y monstruosa, Cthulhu, que yace dormida bajo el océano Pacífico, esperando el momento de despertar y traer caos al mundo.
+                    </p>
+                    <a href="https://a.co/d/1ULPz7o" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/H2.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> El profesor William Dyer lidera una expedición a la Antártida, donde su equipo descubre una antigua y avanzada civilización extraterrestre llamada los Antiguos. A medida que exploran las ruinas, se encuentran con horrores indescriptibles y una criatura monstruosa, lo que lleva a Dyer a advertir a otros de los peligros de la región.</p>
+                    <a href="https://a.co/d/6Cnd1qx" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/H3.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> La historia se centra en un meteorito que aterriza en la granja de Nahum Gardner, liberando una sustancia alienígena que drena la vida y la vitalidad de todo lo que toca. La familia Gardner y su entorno sucumben a la influencia maléfica del "color" indescriptible, que deja un paisaje desolado y arruinado.</p>
+                    <a href="https://www.amazon.com.mx/dp/8418067977?ref_=cm_sw_r_mwn_dp_HT5J9W20S0RDH72TF39E&language=en_US" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/H4.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Wilbur Whateley, un ser mitad humano y mitad monstruo, nace en el pequeño pueblo de Dunwich. Criado por su abuelo y su madre loca, Wilbur busca completar un ritual para traer a su padre, Yog-Sothoth, a la Tierra. Los profesores Armitage, Rice y Morgan descubren su plan y luchan para detenerlo y el horror que se avecina.
+                    </p>
+                    <a href="https://a.co/d/4DdX0FJ" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/H5.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> El narrador, Robert Olmstead, visita el decadente pueblo costero de Innsmouth y descubre que sus habitantes han hecho un pacto con criaturas marinas conocidas como los Profundos. Estas criaturas han alterado genéticamente a los humanos locales, lo que lleva a Olmstead a descubrir su propio y aterrador vínculo con ellos.</p>
+                    <a href="https://a.co/d/eit9O0i" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/H6.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Charles Dexter Ward, un joven de Providence, investiga a su ancestro Joseph Curwen, un brujo necromante. Al intentar revivir las prácticas ocultas de Curwen, Ward libera fuerzas malignas y experimenta una transformación aterradora. Su médico, el Dr. Marinus Bicknell Willett, se esfuerza por salvarlo y detener la amenaza sobrenatural.</p>
+                    <a href="https://a.co/d/0UVkDMc" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/H7.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Nathaniel Wingate Peaslee lleva una vida tranquila como profesor de economía política en la Universidad de Miskatonic, Arkham, hasta que un día sufre un extraño colapso en mitad de una lección magistral... Todo se transforma en su vida, sus intereses, su personalidad, e incluso su apariencia externa.</p>
+                    <a href="https://a.co/d/9twlWVs" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/H8.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Los seres de El que susurra en la oscuridad son nada más y nada menos que extraterrestres que desean conocer algo de lo humano, y no dioses cercanos a lo satánico. Lovecraft había dejado que sus personajes huyeran frente a lo extraño, haciéndoles rechazar el saber oculto.</p>
+                    <a href="https://a.co/d/jcaR6N8" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="book">
+                <img src=".vscode/H9.jpg" alt="Libro 1 de Howard Phillips Lovecraft">
+                <div class="book-info">
+                    <p><strong>Libro 1:</strong> Pickman es un pintor en cuyos cuadros se encuentran monstruos desconocidos realizando actos de innombrable crueldad, cuya sola visión transmite una inenarrable sensación de realismo que atenta contra la cordura.</p>
+                    <a href="https://a.co/d/eN9FHuq" class="button"onclick="saveCurrentSection('howard-phillips-lovecraft')">¡Consiguelo Aquí!</a>
+                </div>
+            </div>
+            <div class="button-container">
+                <button class="button" onclick="goToNextAuthor('alex-mirez', 'video1')">Siguiente Autor</button>
+            </div>
+        </div>
+        <button class="button" onclick="resetPage()" >INICIO</button>
+
+        <video id="video1" class="video-background background" src=".vscode/alex-mirez.mp4.mp4" type="video/mp4" loop muted></video>
+        <video id="video2" class="video-background background" src=".vscode/flor.mp4" type="video/mp4" loop muted></video>
+        <video id="video3" class="video-background background" src=".vscode/alice.mp4" type="video/mp4" loop muted></video>
+        <video id="video4" class="video-background background" src=".vscode/stephen.mp4" type="video/mp4" loop muted></video>
+        <video id="video5" class="video-background background" src=".vscode/edgar.mp4" type="video/mp4" loop muted></video>
+        <video id="video6" class="video-background background" src=".vscode/jane.mp4" type="video/mp4" loop muted></video>
+        <video id="video7" class="video-background background" src=".vscode/julio.mp4" type="video/mp4" loop muted></video>
+        <video id="video8" class="video-background background" src="howard.mp4" type="video/mp4" loop muted></video>
+    
+    <script>
+ function showSection(sectionId, videoId, scrollToTop = true) {
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+
+            var backgrounds = document.querySelectorAll('.background');
+            backgrounds.forEach(function(background) {
+                background.classList.remove('active');
+                if (background.tagName === 'VIDEO') {
+                    background.pause();
+                }
+            });
+
+            var activeBackground = document.getElementById(videoId);
+            activeBackground.classList.add('active');
+            if (activeBackground.tagName === 'VIDEO') {
+                activeBackground.play();
+            }
+
+            var tabs = document.querySelectorAll('nav a');
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`nav a[href='#${sectionId}']`).classList.add('active');
+
+            saveCurrentSection(sectionId);
+
+            if (scrollToTop) {
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function saveCurrentSection(sectionId) {
+            localStorage.setItem('currentSection', sectionId);
+        }
+
+        function resetPage() {
+            localStorage.removeItem('currentSection');
+            window.location.href = 'nuevo.html';  
+        }
+
+        function goToNextAuthor(nextSectionId, nextVideoId) {
+            showSection(nextSectionId, nextVideoId);
+        }
+
+        window.onload = function() {
+            var currentSection = localStorage.getItem('currentSection');
+            if (currentSection) {
+                var sectionElement = document.querySelector('a[href="#' + currentSection + '"]');
+                if (sectionElement) {
+                    sectionElement.click();
+                }
+            }
+        }
+        </script>
+      </html>
